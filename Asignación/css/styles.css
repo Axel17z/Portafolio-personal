@@ -1,0 +1,250 @@
+/* ===== Variables (Hoja de Assets de Figma) =====
+   Reemplaza estos valores por los de tu Figma. */
+:root {
+  --primary-color: #1f3fd1;
+  --primary-dark: #1730a3;
+  --secondary-color: #12b5a6;
+  --bg-color: #f6f7fb;
+  --surface-color: #ffffff;
+  --text-color: #14172b;
+  --muted-color: #555b73;
+  --border-color: #d9dcea;
+
+  --font-main: 'Space Grotesk', Arial, sans-serif;
+
+  --fs-h1: clamp(2rem, 5vw, 3.25rem);
+  --fs-h2: clamp(1.6rem, 3vw, 2.25rem);
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --radius: 12px;
+  --space: 1.5rem;
+  --max-width: 1100px;
+}
+
+/* ===== Reseteo ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; }
+a { color: var(--primary-color); }
+
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); margin-bottom: .5rem; }
+h3 { font-size: var(--fs-h3); }
+
+/* ===== Header / Navbar (Flexbox) ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem var(--space);
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: .25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color .25s ease, border-color .25s ease;
+}
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* ===== Botones ===== */
+.btn {
+  display: inline-block;
+  padding: .7rem 1.4rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, transform .15s ease;
+}
+.btn-primary { background: var(--primary-color); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.btn-outline { background: transparent; color: var(--primary-color); }
+.btn-outline:hover { background: var(--primary-color); color: #fff; }
+.btn:active { transform: scale(.97); }
+.btn:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+/* ===== Secciones ===== */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem var(--space);
+}
+.section-intro { color: var(--muted-color); margin-bottom: 2rem; }
+
+/* ===== Hero (Flexbox) ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem var(--space);
+}
+.hero-text { flex: 1 1 420px; }
+.hero-role { color: var(--secondary-color); font-weight: 700; margin-bottom: .75rem; }
+.hero-lead { color: var(--muted-color); max-width: 52ch; margin: 1.25rem 0 2rem; }
+.hero .btn { margin: 0 .75rem .75rem 0; }
+.hero-photo { flex: 0 1 320px; border-radius: 50%; }
+
+/* ===== Galería de proyectos (CSS Grid) ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space);
+}
+
+/* ===== Tarjeta de proyecto (Flexbox interno) ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(20, 23, 43, .12);
+}
+.card img { width: 100%; aspect-ratio: 5 / 3; object-fit: cover; }
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  flex: 1;
+  padding: 1.25rem;
+}
+.card-body p { color: var(--muted-color); }
+.card-body .btn { margin-top: auto; align-self: flex-start; }
+
+/* Badges */
+.badges { display: flex; flex-wrap: wrap; gap: .5rem; }
+.badges li {
+  padding: .2rem .7rem;
+  font-size: .85rem;
+  border-radius: 999px;
+  background: #e4e8fb;
+  color: var(--primary-dark);
+}
+
+/* ===== Sobre mí ===== */
+.about {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+}
+.about p { margin-bottom: 1rem; max-width: 60ch; }
+.skills { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.skills li {
+  padding: .5rem 1rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--secondary-color);
+  border-radius: 8px;
+}
+
+/* ===== Contacto ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  max-width: 520px;
+}
+.contact-form label { font-weight: 500; margin-top: .5rem; }
+.contact-form input,
+.contact-form textarea {
+  padding: .7rem;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  transition: border-color .25s ease;
+}
+.contact-form input:hover,
+.contact-form textarea:hover { border-color: var(--primary-color); }
+.contact-form .btn { margin-top: 1rem; align-self: flex-start; }
+
+/* ===== Footer ===== */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem var(--space);
+  background: var(--text-color);
+  color: #fff;
+}
+.social { display: flex; gap: 1.25rem; }
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+.social a:hover,
+.social a:focus-visible { color: var(--secondary-color); }
+
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+  .hero { flex-direction: column-reverse; text-align: center; padding-top: 3rem; }
+  .hero-lead { margin-inline: auto; }
+  .hero-photo { flex-basis: auto; width: 220px; }
+  .about { grid-template-columns: 1fr; gap: 2rem; }
+  .nav-links { gap: 1rem; }
+  .site-footer { justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
